@@ -1,0 +1,11 @@
+# Ignore Python environment files
+.env
+
+# Ignore node_modules directory
+node_modules/
+
+# Ignore any other OS-specific or IDE-specific files (optional)
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

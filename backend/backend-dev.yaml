@@ -1,0 +1,13 @@
+version: '3'
+services:
+  backend-dev:
+    build:
+      context: .
+    ports:
+      - "5001:5000"
+    volumes:
+      - .:/app
+    environment:
+      - FLASK_ENV=development
+      - FLASK_APP=flask_app.py
+    command: ["flask", "run", "--host=0.0.0.0"]
