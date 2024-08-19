@@ -9,7 +9,6 @@ services:
       - backend
     environment:
       - NODE_ENV=production
-    command: ["npm", "start"]
 
   backend:
     build:
