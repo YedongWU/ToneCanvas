@@ -11,7 +11,7 @@ COPY . .
 RUN npm install
 
 # 构建项目（假设你使用Webpack构建项目）
-#RUN npm run build
+RUN npm run build
 
 # 安装http-server
 RUN npm install -g http-server
