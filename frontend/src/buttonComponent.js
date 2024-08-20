@@ -1,6 +1,9 @@
+// src/buttonComponent.js
+
 import { playIconURL, nextIconURL, pitchVoiceIconURL, guideTraceIconURL } from './svgIcons.js';
 import { sharedStatus, subscribe, setIsInTheButton } from './sharedStatus.js';
 import { updateFrequenciesFromJson, drawFrequencyTrajectory, clearTrajectoryData } from './frequencyUpdater.js';
+import { drawReferenceLines } from './backgroundCanvas.js';
 
 let previousStatus = '';
 
@@ -130,7 +133,8 @@ function fetchAndUpdateFrequencies(url, canvas, context) {
     .then(data => {
       clearTrajectoryData(); // 清除旧的轨迹数据
       updateFrequenciesFromJson(data);
-      drawFrequencyTrajectory(data, canvas, context);
+      drawFrequencyTrajectory(data); // 不再绘制到主canvas上
+      drawReferenceLines(); // 绘制到背景canvas上
     })
     .catch(error => {
       console.error('Error fetching JSON file:', error);
@@ -224,4 +228,3 @@ function handlePositionChange(x, y, status, canvas, context, audio, currentAudio
   
     return () => drawButton(canvas, context, playIcon, nextIcon, pitchVoiceIcon, guideTraceIcon);
   }
-  

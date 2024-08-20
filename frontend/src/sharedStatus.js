@@ -1,3 +1,5 @@
+// src/sharedStatus.js
+
 export const sharedStatus = {
   currentPosition: { x: 0, y: 0 },
   drawing: false,

@@ -1,3 +1,5 @@
+// src/canvas.js
+
 import { sharedStatus, subscribe, getIsInTheButton, getCurrentPosition } from './sharedStatus.js';
 import { initializeButton } from './buttonComponent.js';
 import { getTrajectoryData } from './frequencyUpdater.js';
@@ -89,25 +91,6 @@ function updateAndDrawTrails() {
   }
 }
 
-function drawStoredTrajectories(context) {
-  const trajectoryData = getTrajectoryData();
-
-  context.strokeStyle = 'rgba(128, 128, 128, 0.5)';
-  context.lineWidth = 100;
-
-  // 绘制轨迹
-  trajectoryData.forEach(segment => {
-    if (segment.length > 0) {
-      context.beginPath();
-      context.moveTo(segment[0].x, segment[0].y);
-      for (let i = 1; i < segment.length; i++) {
-        context.lineTo(segment[i].x, segment[i].y);
-      }
-      context.stroke();
-    }
-  });
-}
-
 const drawButton = initializeButton(canvas, context);
 
 function update() {
@@ -133,7 +116,6 @@ function update() {
 
   updateAndDrawSparkles();
   updateAndDrawTrails();
-  drawStoredTrajectories(context);
 
   context.globalAlpha = 1.0;
   context.shadowBlur = 0;

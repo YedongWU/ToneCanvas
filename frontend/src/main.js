@@ -1,10 +1,16 @@
+// src/main.js
+
 import { updatePosition, setDrawingStatus, setCurrentStatus, initializeStatus, sharedStatus, resetPosition, setIsInTheButton } from './sharedStatus.js';
 import './canvas.js';
 import './audioProcessing.js';
 import { initializeButton } from './buttonComponent.js';
+import { initializeBackgroundCanvas } from './backgroundCanvas.js';
 
 const canvas = document.getElementById('canvas');
 const context = canvas.getContext('2d');
+
+// 初始化背景画布
+initializeBackgroundCanvas();
 
 // 初始化按钮，并获取重新绘制按钮的函数
 const drawButton = initializeButton(canvas, context);

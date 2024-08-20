@@ -19,17 +19,13 @@ export function clearTrajectoryData() {
   trajectoryData = [];
 }
 
-export function drawFrequencyTrajectory(jsonData, canvas, context) {
+export function drawFrequencyTrajectory(jsonData) {
   const { data, max_frequency, min_frequency } = jsonData;
 
-  const xMin = canvas.width * 0.15;
-  const xMax = canvas.width * 0.95;
-  const yMin = canvas.height * 0.1;
-  const yMax = canvas.height * 0.9;
-
-  context.strokeStyle = 'rgba(128, 128, 128, 0.5)';
-  context.lineWidth = 100;  // 增加线的粗细
-  context.beginPath();
+  const xMin = 0.15;
+  const xMax = 0.95;
+  const yMin = 0.1;
+  const yMax = 0.9;
 
   let isDrawing = false;
   let trajectorySegment = [];
@@ -41,12 +37,10 @@ export function drawFrequencyTrajectory(jsonData, canvas, context) {
       const y = yMin + (yMax - yMin) * (1 - (Math.log(frequency) - Math.log(min_frequency)) / (Math.log(max_frequency) - Math.log(min_frequency)));
 
       if (isDrawing) {
-        context.lineTo(x, y);
-        trajectorySegment.push({ x, y });
+        trajectorySegment.push({ x: x * window.innerWidth, y: y * window.innerHeight });
       } else {
-        context.moveTo(x, y);
         isDrawing = true;
-        trajectorySegment.push({ x, y });
+        trajectorySegment.push({ x: x * window.innerWidth, y: y * window.innerHeight });
       }
     } else {
       if (isDrawing) {
@@ -60,8 +54,6 @@ export function drawFrequencyTrajectory(jsonData, canvas, context) {
   if (trajectorySegment.length > 0) {
     trajectoryData.push(trajectorySegment);
   }
-
-  context.stroke();
 }
 
 export function getTrajectoryData() {
