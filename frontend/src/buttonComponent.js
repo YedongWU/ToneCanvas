@@ -1,4 +1,4 @@
-import { greenIconURL, cyanIconURL, newIcon1URL, newIcon2URL } from './svgIcons.js';
+import { playIconURL, nextIconURL, pitchVoiceIconURL, guideTraceIconURL } from './svgIcons.js';
 import { sharedStatus, subscribe, setIsInTheButton } from './sharedStatus.js';
 import { updateFrequenciesFromJson, drawFrequencyTrajectory, clearTrajectoryData } from './frequencyUpdater.js';
 
@@ -15,18 +15,18 @@ function handleImageLoadError(event) {
   console.error("Failed to load SVG image:", event.target.src);
 }
 
-const greenIcon = createImageFromURL(greenIconURL, handleImageLoadError);
-const cyanIcon = createImageFromURL(cyanIconURL, handleImageLoadError);
-const newIcon1 = createImageFromURL(newIcon1URL, handleImageLoadError);
-const newIcon2 = createImageFromURL(newIcon2URL, handleImageLoadError);
+const playIcon = createImageFromURL(playIconURL, handleImageLoadError);
+const nextIcon = createImageFromURL(nextIconURL, handleImageLoadError);
+const pitchVoiceIcon = createImageFromURL(pitchVoiceIconURL, handleImageLoadError);
+const guideTraceIcon = createImageFromURL(guideTraceIconURL, handleImageLoadError);
 
-let greenIconDimmed = false;
-let cyanIconDimmed = false;
-let newIcon1Dimmed = false;
-let newIcon2Dimmed = false;
+let playIconDimmed = false;
+let nextIconDimmed = false;
+let pitchVoiceIconDimmed = false;
+let guideTraceIconDimmed = false;
 let isAudioPlaying = false;
 
-function drawButton(canvas, context, greenIcon, cyanIcon, newIcon1, newIcon2) {
+function drawButton(canvas, context, playIcon, nextIcon, pitchVoiceIcon, guideTraceIcon) {
   const buttonWidth = canvas.width * 0.1;
   const buttonHeight = canvas.height * 0.1;
 
@@ -35,17 +35,17 @@ function drawButton(canvas, context, greenIcon, cyanIcon, newIcon1, newIcon2) {
   context.clearRect(10, canvas.height * 0.33 - buttonHeight / 2, buttonWidth, buttonHeight);
   context.clearRect(10, canvas.height * 0.67 - buttonHeight / 2, buttonWidth, buttonHeight);
 
-  context.globalAlpha = greenIconDimmed ? 0.5 : 1.0;
-  context.drawImage(greenIcon, 10, 10, buttonWidth, buttonHeight);
+  context.globalAlpha = playIconDimmed ? 0.5 : 1.0;
+  context.drawImage(playIcon, 10, 10, buttonWidth, buttonHeight);
 
-  context.globalAlpha = cyanIconDimmed ? 0.5 : 1.0;
-  context.drawImage(cyanIcon, 10, canvas.height - 10 - buttonHeight, buttonWidth, buttonHeight);
+  context.globalAlpha = nextIconDimmed ? 0.5 : 1.0;
+  context.drawImage(nextIcon, 10, canvas.height - 10 - buttonHeight, buttonWidth, buttonHeight);
 
-  context.globalAlpha = newIcon1Dimmed ? 0.5 : 1.0;
-  context.drawImage(newIcon1, 10, canvas.height * 0.33 - buttonHeight / 2, buttonWidth, buttonHeight);
+  context.globalAlpha = pitchVoiceIconDimmed ? 0.5 : 1.0;
+  context.drawImage(pitchVoiceIcon, 10, canvas.height * 0.33 - buttonHeight / 2, buttonWidth, buttonHeight);
 
-  context.globalAlpha = newIcon2Dimmed ? 0.5 : 1.0;
-  context.drawImage(newIcon2, 10, canvas.height * 0.67 - buttonHeight / 2, buttonWidth, buttonHeight);
+  context.globalAlpha = guideTraceIconDimmed ? 0.5 : 1.0;
+  context.drawImage(guideTraceIcon, 10, canvas.height * 0.67 - buttonHeight / 2, buttonWidth, buttonHeight);
 
   context.globalAlpha = 1.0;
 }
@@ -143,10 +143,10 @@ function handlePositionChange(x, y, status, canvas, context, audio, currentAudio
   if (isInsideGreenButton(x, y, canvas)) {
     isInButton = true;
     if (status === 'StartDrawing') {
-      greenIconDimmed = true;
+      playIconDimmed = true;
       playAudio(`http://localhost:5000/api/get-wav-file?index=${currentAudioIndex}`, newAudio => audio = newAudio);
     } else if (status === 'EndDrawing' || status === 'NotDrawing') {
-      greenIconDimmed = false;
+      playIconDimmed = false;
       stopAudio(audio);
     }
   }
@@ -154,9 +154,9 @@ function handlePositionChange(x, y, status, canvas, context, audio, currentAudio
   if (isInsideCyanButton(x, y, canvas)) {
     isInButton = true;
     if (status === 'StartDrawing') {
-      cyanIconDimmed = true;
+      nextIconDimmed = true;
     } else if (status === 'EndDrawing' || status === 'NotDrawing') {
-      cyanIconDimmed = false;
+      nextIconDimmed = false;
     }
 
     if (previousStatus === 'StartDrawing' && status === 'Drawing') {
@@ -169,10 +169,10 @@ function handlePositionChange(x, y, status, canvas, context, audio, currentAudio
     if (isInsideNewButton1(x, y, canvas)) {
       isInButton = true;
       if (status === 'StartDrawing') {
-        newIcon1Dimmed = true;
+        pitchVoiceIconDimmed = true;
         playAudio('http://localhost:5000/api/get-pitch-audio', newAudio => audio = newAudio);
       } else if (status === 'EndDrawing' || status === 'NotDrawing') {
-        newIcon1Dimmed = false;
+        pitchVoiceIconDimmed = false;
         stopAudio(audio);
       }
     }
@@ -180,10 +180,10 @@ function handlePositionChange(x, y, status, canvas, context, audio, currentAudio
     if (isInsideNewButton2(x, y, canvas)) {
       isInButton = true;
       if (status === 'StartDrawing') {
-        newIcon2Dimmed = true;
+        guideTraceIconDimmed = true;
         fetchAndUpdateFrequencies('http://localhost:5000/api/get-pitch-json', canvas, context);
       } else if (status === 'EndDrawing' || status === 'NotDrawing') {
-        newIcon2Dimmed = false;
+        guideTraceIconDimmed = false;
       }
     }
   
@@ -203,25 +203,25 @@ function handlePositionChange(x, y, status, canvas, context, audio, currentAudio
     subscribe((status) => {
       if (status.currentStatus === 'StartDrawing' || status.currentStatus === 'Drawing' || status.currentStatus === 'EndDrawing' || status.currentStatus === 'NotDrawing') {
         handlePositionChange(status.currentPosition.x, status.currentPosition.y, status.currentStatus, canvas, context, audio, currentAudioIndex, setCurrentAudioIndex);
-        drawButton(canvas, context, greenIcon, cyanIcon, newIcon1, newIcon2);
+        drawButton(canvas, context, playIcon, nextIcon, pitchVoiceIcon, guideTraceIcon);
       }
     });
   
-    greenIcon.onload = () => {
-      cyanIcon.onload = () => {
-        newIcon1.onload = () => {
-          newIcon2.onload = () => {
-            drawButton(canvas, context, greenIcon, cyanIcon, newIcon1, newIcon2);
+    playIcon.onload = () => {
+      nextIcon.onload = () => {
+        pitchVoiceIcon.onload = () => {
+          guideTraceIcon.onload = () => {
+            drawButton(canvas, context, playIcon, nextIcon, pitchVoiceIcon, guideTraceIcon);
           };
         };
       };
     };
   
-    greenIcon.onerror = handleImageLoadError;
-    cyanIcon.onerror = handleImageLoadError;
-    newIcon1.onerror = handleImageLoadError;
-    newIcon2.onerror = handleImageLoadError;
+    playIcon.onerror = handleImageLoadError;
+    nextIcon.onerror = handleImageLoadError;
+    pitchVoiceIcon.onerror = handleImageLoadError;
+    guideTraceIcon.onerror = handleImageLoadError;
   
-    return () => drawButton(canvas, context, greenIcon, cyanIcon, newIcon1, newIcon2);
+    return () => drawButton(canvas, context, playIcon, nextIcon, pitchVoiceIcon, guideTraceIcon);
   }
   
