@@ -1,24 +1,23 @@
 export const playIconURL = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(`
-    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
-      <path fill="#1afa29" d="M882.734114 459.147258l0.024559-0.024559L244.016061 21.12718l-0.199545 0.188288C230.582097 8.748245 212.62819 1.014096 192.840518 1.014096c-40.704051 0-73.699536 32.66905-73.699536 72.996524 0 22.148439-0.954745 65.513086 0 64.572668l0 373.422851 0 393.071354c0 0.325411 0 25.249057 0 44.935422 0 40.302915 32.995485 72.972988 73.699536 72.972988 19.862373 0 37.892005-7.78429 51.125401-20.466124l0.050142 0.025583 638.742613-437.982216-0.024559-0.038886c13.886265-13.270235 22.549575-31.889291 22.549575-52.531424 0-0.050142 0-0.088004 0-0.150426 0-0.050142 0-0.11154 0-0.149403C905.28369 491.048829 896.620379 472.41647 882.734114 459.147258z" />
-    </svg>
-    `);
-    
-    export const nextIconURL = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(`
-      <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
-          <path fill="#1296db" d="M17.066667 512V227.584c0-52.138667 56.405333-84.650667 101.546666-58.624l246.357334 142.250667 246.357333 142.250666c45.141333 26.026667 45.141333 91.221333 0 117.248L364.970667 712.874667 118.613333 855.04C73.472 881.152 17.066667 848.554667 17.066667 796.416V512zM893.696 865.28c-57.6 0-104.704-47.104-104.704-104.704V263.424c0-57.6 47.104-104.704 104.704-104.704S998.4 205.824 998.4 263.424v497.237333c0 57.514667-47.104 104.618667-104.704 104.618667z"  />
-    </svg>
-    `);
-    
-    export const pitchVoiceIconURL = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(`
-    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
-      <path fill="#ff4500" d="M882.734114 459.147258l0.024559-0.024559L244.016061 21.12718l-0.199545 0.188288C230.582097 8.748245 212.62819 1.014096 192.840518 1.014096c-40.704051 0-73.699536 32.66905-73.699536 72.996524 0 22.148439-0.954745 65.513086 0 64.572668l0 373.422851 0 393.071354c0 0.325411 0 25.249057 0 44.935422 0 40.302915 32.995485 72.972988 73.699536 72.972988 19.862373 0 37.892005-7.78429 51.125401-20.466124l0.050142 0.025583 638.742613-437.982216-0.024559-0.038886c13.886265-13.270235 22.549575-31.889291 22.549575-52.531424 0-0.050142 0-0.088004 0-0.150426 0-0.050142 0-0.11154 0-0.149403C905.28369 491.048829 896.620379 472.41647 882.734114 459.147258z" />
-    </svg>
-    `);
-    
-    export const guideTraceIconURL = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(`
-    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
-      <path fill="#ffd700" d="M882.734114 459.147258l0.024559-0.024559L244.016061 21.12718l-0.199545 0.188288C230.582097 8.748245 212.62819 1.014096 192.840518 1.014096c-40.704051 0-73.699536 32.66905-73.699536 72.996524 0 22.148439-0.954745 65.513086 0 64.572668l0 373.422851 0 393.071354c0 0.325411 0 25.249057 0 44.935422 0 40.302915 32.995485 72.972988 73.699536 72.972988 19.862373 0 37.892005-7.78429 51.125401-20.466124l0.050142 0.025583 638.742613-437.982216-0.024559-0.038886c13.886265-13.270235 22.549575-31.889291 22.549575-52.531424 0-0.050142 0-0.088004 0-0.150426 0-0.050142 0-0.11154 0-0.149403C905.28369 491.048829 896.620379 472.41647 882.734114 459.147258z" />
-    </svg>
-    `);
+  <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 322.73 80.45">
+    <text transform="translate(57.85 61.38)" style="fill: #aaffc3; font-family: CooperBlack, &apos;Cooper Black&apos;; font-size: 72px; stroke: #aaffc3; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"><tspan x="0" y="0">P</tspan><tspan x="49.25" y="0" style="letter-spacing: .02em;">L</tspan><tspan x="95.94" y="0" style="letter-spacing: -.06em;">A</tspan><tspan x="150.89" y="0">Y</tspan></text>
+  </svg>
+`);
+export const nextIconURL = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(`
+  <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 322.73 80.45">
+    <text transform="translate(52.77 61.38)" style="fill: #89cff0; font-family: CooperBlack, &apos;Cooper Black&apos;; font-size: 72px; stroke: #89cff0; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"><tspan x="0" y="0">NEXT</tspan></text>
+  </svg>
+`);
+
+export const pitchVoiceIconURL = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(`
+  <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 322.73 80.45">
+    <text transform="translate(41.73 61.38)" style="fill: #f4c2c2; font-family: CooperBlack, &apos;Cooper Black&apos;; font-size: 72px; stroke: #f4c2c2; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"><tspan x="0" y="0">PI</tspan><tspan x="79.03" y="0" style="letter-spacing: 0em;">T</tspan><tspan x="129.02" y="0" style="letter-spacing: 0em;">C</tspan><tspan x="181.55" y="0">H</tspan></text>
+  </svg>
+`);
+
+export const guideTraceIconURL = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(`
+  <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 322.73 80.45">
+    <text transform="translate(29.12 61.38)" style="fill: #ffdab9; font-family: CooperBlack, &apos;Cooper Black&apos;; font-size: 72px; stroke: #ffdab9; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"><tspan x="0" y="0">TR</tspan><tspan x="106.35" y="0" style="letter-spacing: -.04em;">A</tspan><tspan x="162.91" y="0">CE</tspan></text>
+  </svg>
+`);
     

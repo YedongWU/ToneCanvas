@@ -15,7 +15,7 @@ function drawReferenceLines() {
 
   const trajectoryData = getTrajectoryData();
 
-  backgroundContext.strokeStyle = 'rgba(128, 128, 128, 1)';  // 不透明浅灰色
+  backgroundContext.strokeStyle = 'rgba(192, 192, 192, 1)';  // 不透明浅灰色
   backgroundContext.lineWidth = 100;
 
   trajectoryData.forEach(segment => {
@@ -31,7 +31,7 @@ function drawReferenceLines() {
       backgroundContext.beginPath();
       backgroundContext.arc(segment[0].x, segment[0].y, 50, 0, 2 * Math.PI);  // 圆形半径50
       backgroundContext.arc(segment[segment.length - 1].x, segment[segment.length - 1].y, 50, 0, 2 * Math.PI);  // 圆形半径50
-      backgroundContext.fillStyle = 'rgba(128, 128, 128, 1)';
+      backgroundContext.fillStyle = 'rgba(192, 192, 192, 1)';
       backgroundContext.fill();
     }
   });
